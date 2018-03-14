@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.genesis.architect</groupId>
-    <artifactId>cxf-demo</artifactId>
+    <artifactId>axis-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>war</packaging>
@@ -15,38 +15,38 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cxf.version>3.1.7</cxf.version>
-        <spring.version>4.0.9.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <jstl.version>1.2</jstl.version>
         <servlet-api.version>2.5</servlet-api.version>
         <jsp-api.version>2.0</jsp-api.version>
+        <axis2.version>1.7.4</axis2.version>
+        <spring.version>4.0.9.RELEASE</spring.version>
     </properties>
 
     <!-- pom.xml增加多环境配置的配置 -->
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <package.environment>development</package.environment>
-            </properties>
-        </profile>
-        <profile>
-            <id>pro</id>
-            <properties>
-                <package.environment>production</package.environment>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <package.environment>testing</package.environment>
-            </properties>
-        </profile>
-    </profiles>
+    <!--<profiles>-->
+        <!--<profile>-->
+            <!--<id>dev</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<package.environment>development</package.environment>-->
+            <!--</properties>-->
+        <!--</profile>-->
+        <!--<profile>-->
+            <!--<id>pro</id>-->
+            <!--<properties>-->
+                <!--<package.environment>production</package.environment>-->
+            <!--</properties>-->
+        <!--</profile>-->
+        <!--<profile>-->
+            <!--<id>test</id>-->
+            <!--<properties>-->
+                <!--<package.environment>testing</package.environment>-->
+            <!--</properties>-->
+        <!--</profile>-->
+    <!--</profiles>-->
 
     <dependencies>
         <!-- spring -->
@@ -55,31 +55,86 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-core</artifactId>-->
+        <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-beans</artifactId>-->
+        <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
+        <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-webmvc</artifactId>-->
+        <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-aop</artifactId>-->
+        <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-jdbc</artifactId>-->
+        <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-tx</artifactId>-->
+        <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+
+        <!-- axis2 -->
         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.version}</version>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-transport-xmpp</artifactId>
+            <version>${axis2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.version}</version>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-transport-udp</artifactId>
+            <version>${axis2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <version>${cxf.version}</version>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-transport-tcp</artifactId>
+            <version>${axis2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-webapp</artifactId>
+            <version>${axis2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-xmlbeans</artifactId>
+            <version>${axis2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-spring</artifactId>
+            <version>${axis2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-soapmonitor-servlet</artifactId>
+            <version>${axis2.version}</version>
         </dependency>
 
         <!-- servlet start -->
@@ -147,12 +202,12 @@
 
             <!-- tomcat 服务器 -->
             <!--<plugin>-->
-                <!--<groupId>org.apache.tomcat.maven</groupId>-->
-                <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<port>8080</port>-->
-                    <!--<path>/${project.artifactId}</path>-->
-                <!--</configuration>-->
+            <!--<groupId>org.apache.tomcat.maven</groupId>-->
+            <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<port>8080</port>-->
+            <!--<path>/${project.artifactId}</path>-->
+            <!--</configuration>-->
             <!--</plugin>-->
 
             <!--打war包到指定的目录下 -->
@@ -178,7 +233,8 @@
                             </artifactItems>
                             <!-- <outputDirectory>${dist.console.war.dir}</outputDirectory> -->
                             <!--指定war包保存地址 -->
-                            <outputDirectory>${basedir}/WAR/${package.environment}</outputDirectory>
+                            <!--<outputDirectory>${basedir}/WAR/${package.environment}</outputDirectory>-->
+                            <outputDirectory>${basedir}/WAR</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
