@@ -11,6 +11,7 @@
 
     <modules>
         <module>gio-utils</module>
+        <module>gtime-utils</module>
     </modules>
 
     <build>
